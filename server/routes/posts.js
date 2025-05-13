@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getPosts } from '../controllers/posts.js';    
+import { getPosts, createPost } from '../controllers/posts.js';    
 
 const router = express.Router();
 
@@ -8,5 +8,5 @@ const router = express.Router();
 // This is a test route to check if the posts route is working
 
 router.get('/', getPosts); // This is a test route to check if the posts route is working
-
+router.post('/', createPost);
 export default router;
