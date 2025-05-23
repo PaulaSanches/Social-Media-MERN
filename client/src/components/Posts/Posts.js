@@ -1,13 +1,12 @@
 import React from 'react';
-import Post  from './Post/Post.js'; // Importing the Post component
+import Post  from './Post/Post'; // Importing the Post component  
 
 
 
 const Posts = () => {
     return (
         <>
-            <h1>Posts Component</h1>
-            <Post />
+            <h1>Posts</h1>
             <Post />
             <Post />
         </>
