@@ -4,14 +4,19 @@ import { Container, AppBar, Typography, Grow, Grid }    from '@material-ui/core'
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';  
 import flashbacks from './images/flashbacks.png';
+import useStyles from './styles'; // Importing the styles
+// Importing the styles
+
 
 
 const App = () => {
+    const classes = useStyles(); // Using the styles
+    // Using the styles
     return (
         <Container maxWidth="lg">
-            <AppBar position="static" color="inherit">
-                <Typography variant="h2" align="center">Flashbacks</Typography>
-                <img src={flashbacks} alt="flashbacks" height="60" />
+            <AppBar className={classes.appBar} position="static" color="inherit">
+                <Typography className={classes.heading} variant="h2" align="center">Flashbacks</Typography>
+                <img className={classes.image} src={flashbacks} alt="flashbacks" height="60" />
             </AppBar>
             <Grow in>
                 <Container>
