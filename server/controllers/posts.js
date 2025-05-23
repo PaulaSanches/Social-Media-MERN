@@ -23,11 +23,9 @@ export const createPost = async (req, res) => {
     await newPost.save(); // Save the new post to the database
 
     res.status(201).json(newPost); // Send the new post as a JSON response
-
     // restapitutorial.com.com/lessons/httpstatuscodes.html
     // 201 Created - The request has been fulfilled and resulted in a new resource being created.
     // 409 Conflict - The request could not be completed due to a conflict with the current state of the resource.
-
   }
   catch (error) {
     res.status(409).json({ message: error.message }); // Send an error message if something goes wrong
