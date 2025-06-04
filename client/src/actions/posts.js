@@ -7,6 +7,6 @@ export const getPosts = () => async (dispatch) => {
 
         dispatch({ type: 'FETCH_ALL', payload: data }); // Dispatch action to update state with fetched posts
     } catch (error) {
-        console.error(error.message); // Log any errors that occur during the fetch
+        console.log(error.message); // Log any errors that occur during the fetch
     }
 }
