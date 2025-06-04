@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';   
 import { Container, AppBar, Typography, Grow, Grid }    from '@material-ui/core';   
+import { useDispatch } from 'react-redux';  
+
+import { getPosts} from './actions/posts'; // Importing the action to fetch posts
 
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';  
@@ -11,7 +14,12 @@ import useStyles from './styles'; // Importing the styles
 
 const App = () => {
     const classes = useStyles(); // Using the styles
-    // Using the styles
+    const dispatch = useDispatch(); // Using the dispatch function from Redux
+    
+    useEffect(() => {
+        // Dispatch an action to fetch posts when the component mounts
+        dispatch(getPosts());
+    }, [dispatch]); // The dependency array ensures this effect runs only once when the component mounts
     return (
         <Container maxWidth="lg">
             <AppBar className={classes.appBar} position="static" color="inherit">
