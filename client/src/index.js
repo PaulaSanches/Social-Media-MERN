@@ -7,6 +7,8 @@ import * as thunk from 'redux-thunk';
 import reducers from './reducers';
 
 import App from './App';
+import './index.css'; // Importing the CSS file for global styles
+// Importing the main App component
 
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
