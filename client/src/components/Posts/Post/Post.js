@@ -1,12 +1,44 @@
 import React from 'react';
-
+import {Card, CardActions, CardContent, CardMedia, Button, Typography} from '@material-ui/core'; // Importing Material-UI components
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'; // Importing the ThumbUp icon
+import DeleteIcon from '@material-ui/icons/Delete'; // Importing the Delete icon 
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz'; // Importing the MoreHoriz icon
+import moment from 'moment'; // Importing moment.js for date formatting
 import useStyles from './styles'; // Importing the styles
 
-const Post = () => {
+const Post = ({post}) => {
     const classes = useStyles(); // Using the styles
     return (
+        <Card className={classes.card}> 
             <h1>Post</h1>
-        
+            <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
+            <div className={classes.overlay}>
+                <Typography variant="h6">{post.creator}</Typography>
+                <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+            </div>
+            <div className={classes.overlay2}>
+                <Button style={{color: 'white'}} size="small" onClick={() => {}}>
+                    <MoreHorizIcon fontSize="default" />
+                </Button>
+            </div>
+            <div className={classes.details}>
+                <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => `#${tag} `)}</Typography> 
+            </div>
+            <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>     
+            </CardContent>
+            <CardActions className={classes.cardActions}>
+                <Button size="small" color="primary" onClick={() => {}}>
+                    <ThumbUpAltIcon fontSize="small" />
+                    Like {post.likeCount}
+                </Button>
+                <Button size="small" color="primary" onClick={() => {}}>
+                    <DeleteIcon fontSize="small" />
+                    Delete
+                </Button>
+            </CardActions>
+        </Card>        
     );
 }
 
