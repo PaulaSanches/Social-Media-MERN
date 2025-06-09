@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getPosts, createPost } from '../controllers/posts.js';     
+import { getPosts, createPost, updatePost } from '../controllers/posts.js';     
 // import { getPosts, createPost } from '../controllers/posts.js';               
 
 const router = express.Router();
@@ -11,6 +11,8 @@ const router = express.Router();
 
 router.get('/', getPosts); // Get all posts
 router.post('/', createPost); // Create a post
+router.patch('/:id/updatePost');
+
 // router.get('/', (req, res) => {
 
 
