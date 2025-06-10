@@ -26,20 +26,26 @@ const Form = ({currentId, setcurrentId}) => {
 
         if(currentId) {
             // If currentId is set, it means we are updating an existing post
-            dispatch(updatePost(currentId, postData)); // Dispatching the action to update a post with the form data
+            dispatch(updatePost(currentId, postData)); 
+            // Dispatching the action to update a post with the form data
         } else {
         dispatch(createPost(postData));
-        } // Dispatching the action to create a post with the form data
+         // Clearing the form after submission
+        } 
+        clear();// Dispatching the action to create a post with the form data
     }
 
     const clear = () => {
+
+        setcurrentId(null); // Clearing the current ID
+        setPostData({ creator: '', title: '', message: '', tags: '', selectedFile:'' }); // Resetting the form data
         
     }
 
     return (
             <Paper className={classes.paper}>
                 <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                    <Typography variant="h6">Creating a flashback</Typography>
+                    <Typography variant="h6">{ currentId ? 'Editing' : 'Creating' } a flashback</Typography>
                     <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator}onChange={(e) => setPostData({ ...postData, creator: e.target.value })}></TextField>
                     <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title}onChange={(e) => setPostData({ ...postData, title: e.target.value })}></TextField>
                     <TextField name="message" variant="outlined" label="Message" fullWidth value={postData.message}onChange={(e) => setPostData({ ...postData, message: e.target.value })}></TextField>

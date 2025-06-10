@@ -17,17 +17,19 @@ const Post = ({post, setcurrentId}) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color: 'white'}} size="small" onClick={() => setcurrentId(post._id)}>
-                    <MoreHorizIcon fontSize="default" />
+                <Button style={{color: 'white'}} 
+                        size="small" 
+                        onClick={() => setcurrentId(post._id)}>
+                        <MoreHorizIcon fontSize="default" />
                 </Button>
             </div>
             <div className={classes.details}>
                 <Typography variant="body2" color="textSecondary">{post.tags.map((tag) => `#${tag} `)}</Typography> 
             </div>
-            <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
+                <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>     
-            </CardContent>
+                <Typography variant="h5" gutterBottom>{post.message}</Typography>
+            </CardContent>  
             <CardActions className={classes.cardActions}>
                 <Button size="small" color="primary" onClick={() => {}}>
                     <ThumbUpAltIcon fontSize="small" />
