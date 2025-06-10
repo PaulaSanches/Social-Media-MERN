@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core'; // Importing Material-UI components
 import FileBase64 from 'react-file-base64'; // Importing FileBase64 for file uploads    
-import { useDispatch } from 'react-redux';  
+import { useDispatch, useSelector } from 'react-redux';  
 
 import useStyles from './styles'; // Importing the styles
 import { createPost} from '../../actions/posts'; // Importing the action to create a post
@@ -11,10 +11,15 @@ import { updatePost } from '../../actions/posts'; // Importing the action to upd
 // This component is used to create a new post
 
 const Form = ({currentId, setcurrentId}) => {
-    const [postData, setPostData] = useState({ creator: '', title: '', message: '', selectedFile: '' }); // State to hold form data
+    const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile:'' })// State to hold form data
+    const post = useSelector((state) => currentId? state.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles(); // Using the styles
     const dispatch = useDispatch(); // Using the dispatch function from Redux
     // Function to handle form submission
+
+    useEffect(() => {
+        if(post) setPostData(post); // If a post is selected for editing, set the form data to that post's data
+    }, [post]); // The effect runs whenever the post changes
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Preventing the default form submission behavior
