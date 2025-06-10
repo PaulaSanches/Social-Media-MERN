@@ -4,9 +4,13 @@ import FileBase64 from 'react-file-base64'; // Importing FileBase64 for file upl
 import { useDispatch } from 'react-redux';  
 
 import useStyles from './styles'; // Importing the styles
-import { createPost } from '../../actions/posts'; // Importing the action to create a post
+import { createPost} from '../../actions/posts'; // Importing the action to create a post
+import { updatePost } from '../../actions/posts'; // Importing the action to update a post
 
-const Form = () => {
+//get the current ID of the user
+// This component is used to create a new post
+
+const Form = ({currentId, setcurrentId}) => {
     const [postData, setPostData] = useState({ creator: '', title: '', message: '', selectedFile: '' }); // State to hold form data
     const classes = useStyles(); // Using the styles
     const dispatch = useDispatch(); // Using the dispatch function from Redux
@@ -14,7 +18,13 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Preventing the default form submission behavior
-        dispatch(createPost(postData)); // Dispatching the action to create a post with the form data
+
+        if(currentId) {
+            // If currentId is set, it means we are updating an existing post
+            dispatch(updatePost(currentId, postData)); // Dispatching the action to update a post with the form data
+        } else {
+        dispatch(createPost(postData));
+        } // Dispatching the action to create a post with the form data
     }
 
     const clear = () => {

@@ -6,7 +6,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz'; // Importing the MoreH
 import moment from 'moment'; // Importing moment.js for date formatting
 import useStyles from './styles'; // Importing the styles
 
-const Post = ({post}) => {
+const Post = ({post, setcurrentId}) => {
     const classes = useStyles(); // Using the styles
     return (
         <Card className={classes.card}> 
@@ -17,7 +17,7 @@ const Post = ({post}) => {
                 <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
-                <Button style={{color: 'white'}} size="small" onClick={() => {}}>
+                <Button style={{color: 'white'}} size="small" onClick={() => setcurrentId(post._id)}>
                     <MoreHorizIcon fontSize="default" />
                 </Button>
             </div>
