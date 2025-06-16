@@ -27,7 +27,7 @@ export const updatePost = (id, post) => async (dispatch) => {
 
         dispatch({ type: 'UPDATE', payload: data }); // Dispatch action to update state with the updated post
     } catch (error) {
-        console.log(error); // Log any errors that occur during the update
+        console.log(error.message); // Log any errors that occur during the update
     }
 }
 
@@ -37,6 +37,16 @@ export const deletePost = (id) => async (dispatch) => {
 
         dispatch({ type: 'DELETE', payload: id }); // Dispatch action to update state by removing the deleted post
     } catch (error) {
-        console.log(error); // Log any errors that occur during the deletion
+        console.log(error.message); // Log any errors that occur during the deletion
     }
 }
+
+export const likePost = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.likePost(id); // Like the post via the API
+
+        dispatch({ type: 'LIKE', payload: data }); // Dispatch action to update state with the liked post
+    } catch (error) {
+        console.log(error.message); // Log any errors that occur during the like action
+    }
+}   

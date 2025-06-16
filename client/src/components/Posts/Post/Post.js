@@ -6,9 +6,10 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz'; // Importing the MoreH
 import moment from 'moment'; // Importing moment.js for date formatting
 import useStyles from './styles'; // Importing the styles
 import { useDispatch } from 'react-redux'; // Importing useDispatch from Redux
-import { deletePost } from '../../../actions/posts'; // Importing the action to delete a post   
+import { deletePost, likePost } from '../../../actions/posts'; // Importing the action to delete a post   
 // Importing the action to delete a post
 // This component is used to display a single post
+
 
 const Post = ({post, setcurrentId}) => {
     const classes = useStyles(); // Using the styles
@@ -37,7 +38,7 @@ const Post = ({post, setcurrentId}) => {
                 <Typography variant="h5" gutterBottom>{post.message}</Typography>
             </CardContent>  
             <CardActions className={classes.cardActions}>
-                <Button size="small" color="primary" onClick={() => {}}>
+                <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}>
                     <ThumbUpAltIcon fontSize="small" />
                     Like {post.likeCount}
                 </Button>

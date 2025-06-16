@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getPosts, createPost, updatePost, deletePost } from '../controllers/posts.js';     
+import { getPosts, createPost, updatePost, deletePost, likePost } from '../controllers/posts.js';     
 // import { getPosts, createPost } from '../controllers/posts.js';               
 
 const router = express.Router();
@@ -13,7 +13,7 @@ router.get('/', getPosts); // Get all posts
 router.post('/', createPost); // Create a post
 router.patch('/:id', updatePost);
 router.delete('/:id', deletePost); // Update a post by ID
-
+router.patch('/:id/likePost', likePost); // Update a post by ID'  
 // router.get('/', (req, res) => {
 
 
