@@ -30,3 +30,13 @@ export const updatePost = (id, post) => async (dispatch) => {
         console.log(error); // Log any errors that occur during the update
     }
 }
+
+export const deletePost = (id) => async (dispatch) => { 
+    try {
+        await api.deletePost(id); // Delete the post via the API
+
+        dispatch({ type: 'DELETE', payload: id }); // Dispatch action to update state by removing the deleted post
+    } catch (error) {
+        console.log(error); // Log any errors that occur during the deletion
+    }
+}

@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.get('/', getPosts); // Get all posts
 router.post('/', createPost); // Create a post
-router.patch('/:id/updatePost', updatePost);
+router.patch('/:id', updatePost);
 router.delete('/:id', deletePost); // Update a post by ID
 
 // router.get('/', (req, res) => {
