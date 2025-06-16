@@ -5,9 +5,15 @@ import DeleteIcon from '@material-ui/icons/Delete'; // Importing the Delete icon
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'; // Importing the MoreHoriz icon
 import moment from 'moment'; // Importing moment.js for date formatting
 import useStyles from './styles'; // Importing the styles
+import { useDispatch } from 'react-redux'; // Importing useDispatch from Redux
+import { deletePost } from '../../../actions/posts'; // Importing the action to delete a post   
+// Importing the action to delete a post
+// This component is used to display a single post
 
 const Post = ({post, setcurrentId}) => {
     const classes = useStyles(); // Using the styles
+    const dispatch = useDispatch(); // Using the dispatch function from Redux
+    // Function to handle post deletion
     return (
         <Card className={classes.card}> 
             <h1>Post</h1>
@@ -35,7 +41,7 @@ const Post = ({post, setcurrentId}) => {
                     <ThumbUpAltIcon fontSize="small" />
                     Like {post.likeCount}
                 </Button>
-                <Button size="small" color="primary" onClick={() => {}}>
+                <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}>
                     <DeleteIcon fontSize="small" />
                     Delete
                 </Button>
